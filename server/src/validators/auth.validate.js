@@ -17,3 +17,19 @@ export function registerValidate(req, res, next) {
 
   next();
 }
+
+export function loginValidate(req, res, next) {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "Campos incompletos" });
+  }
+
+  const cleanEmail = email.trim();
+  const cleanPassword = password.trim();
+
+  req.body.email = cleanEmail;
+  req.body.password = cleanPassword;
+
+  next();
+}

@@ -7,4 +7,9 @@ export const DB_CONFIG = {
   database: process.env.DB_NAME,
 };
 
+export const JWT_CONFIG = {
+  jwtSecret: process.env.JWT_SECRET,
+  jwtExpiration: process.env.JWT_EXPIRATION,
+};
+
 export const PORT = process.env.PORT ?? 3050;
