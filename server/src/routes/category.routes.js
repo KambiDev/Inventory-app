@@ -1,6 +1,7 @@
 import { Router } from "express";
-import CategoryController from "../controllers/category.controller";
-import { requireRole, verifyToken } from "../middlewares/auth";
+import CategoryController from "../controllers/category.controller.js";
+import { requireRole, verifyToken } from "../middlewares/auth.js";
+import { categoryValidate } from "../validators/category.validate.js";
 
 const categoryRouter = Router();
 
@@ -14,13 +15,15 @@ categoryRouter.post(
   "/",
   verifyToken,
   requireRole("admin"),
+  categoryValidate,
   CategoryController.create,
 );
 
-categoryRouter.patch(
+categoryRouter.put(
   "/:id",
   verifyToken,
   requireRole("admin"),
+  categoryValidate,
   CategoryController.update,
 );
 

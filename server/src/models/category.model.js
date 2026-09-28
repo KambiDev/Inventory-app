@@ -10,7 +10,7 @@ class CategoryModel {
 
   static async getById(id) {
     const [rows] = await pool.execute(
-      "SELECT name, description FROM categories WHERE id = ?;",
+      "SELECT id, name, description FROM categories WHERE id = ?;",
       [id],
     );
     return rows[0] ?? null;
