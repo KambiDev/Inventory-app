@@ -3,7 +3,7 @@ import pool from "../config/db.js";
 class CategoryModel {
   static async getAll() {
     const [rows] = await pool.execute(
-      "SELECT name, description FROM categories;",
+      "SELECT id, name, description FROM categories;",
     );
     return rows;
   }

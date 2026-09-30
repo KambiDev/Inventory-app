@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { JWT_CONFIG } from "../config/config.js";
 
 export function verifyToken(req, res, next) {
-  const authHeader = req.headers["token"];
+  const authHeader = req.headers["authorization"] || req.headers["token"];
   const token = authHeader?.split(" ")[1];
 
   if (!token) {
